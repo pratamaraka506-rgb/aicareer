@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Career OS</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<iframe src="https://script.google.com/macros/s/AKfycbGTCJS1TNJEOJ2rhfr77tk4ehSAJDRRPDNUz99YLI3Y_gZYj2EqGj2QEdEWOoSV6Us/exec"></iframe>
+
+</body>
+</html>
