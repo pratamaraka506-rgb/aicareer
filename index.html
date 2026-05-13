@@ -3,6 +3,12 @@
 <head>
   <title>AI Career OS</title>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" type="image/png"
+    href="https://github.com/pratamaraka506-rgb/aicareer/raw/main/AICAREER-RADEN.png">
+
   <style>
     *{
       margin:0;
@@ -13,6 +19,7 @@
     body{
       font-family:Arial,sans-serif;
       overflow:hidden;
+      background:#050505;
     }
 
     .topbar{
@@ -22,6 +29,7 @@
       display:flex;
       align-items:center;
       padding:0 20px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
     .topbar img{
@@ -32,6 +40,7 @@
     .topbar h1{
       color:#fff;
       font-size:18px;
+      font-weight:700;
     }
 
     iframe{
@@ -39,15 +48,49 @@
       height:calc(100vh - 60px);
       border:none;
       display:block;
+      background:#fff;
     }
-  </style>
-<head>
-  <title>AI Career OS</title>
 
-  <link rel="icon" type="image/png" href="https://github.com/pratamaraka506-rgb/aicareer/raw/main/AICAREER-RADEN.png">
+    /* PAYMENT TOAST */
 
-  <style>
-  ...
+    .toast{
+      position:fixed;
+      top:80px;
+      right:20px;
+      min-width:280px;
+      padding:16px 20px;
+      border-radius:14px;
+      color:#fff;
+      font-size:14px;
+      font-weight:600;
+      z-index:9999;
+      box-shadow:0 10px 40px rgba(0,0,0,0.35);
+      animation:slideIn .4s ease;
+    }
+
+    .toast.success{
+      background:linear-gradient(135deg,#00c853,#009624);
+    }
+
+    .toast.failed{
+      background:linear-gradient(135deg,#ff1744,#d50000);
+    }
+
+    .toast.pending{
+      background:linear-gradient(135deg,#ff9800,#ef6c00);
+    }
+
+    @keyframes slideIn{
+      from{
+        opacity:0;
+        transform:translateX(100%);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
   </style>
 </head>
 
@@ -58,7 +101,60 @@
     <h1>AI Career OS</h1>
   </div>
 
-  <iframe src="https://script.google.com/macros/s/AKfycbxp_GycjML4Nl7j10jdx6DZQqojoT3kz4EtUXCzq_vSVOfX_PJCs5L6801fuBzvNZpJ_w/exec"></iframe>
+  <iframe
+    src="https://script.google.com/macros/s/AKfycbxp_GycjML4Nl7j10jdx6DZQqojoT3kz4EtUXCzq_vSVOfX_PJCs5L6801fuBzvNZpJ_w/exec">
+  </iframe>
+
+  <script>
+
+    function showToast(message,type){
+
+      const toast=document.createElement("div");
+
+      toast.className=`toast ${type}`;
+      toast.innerHTML=message;
+
+      document.body.appendChild(toast);
+
+      setTimeout(()=>{
+        toast.remove();
+      },5000);
+    }
+
+    // READ PAYMENT STATUS
+
+    const params=new URLSearchParams(window.location.search);
+
+    const payment=params.get("payment");
+
+    if(payment==="success"){
+
+      showToast(
+        "✅ Pembayaran berhasil! Premium sedang diaktifkan.",
+        "success"
+      );
+
+    }
+
+    if(payment==="failed"){
+
+      showToast(
+        "❌ Pembayaran gagal atau dibatalkan.",
+        "failed"
+      );
+
+    }
+
+    if(payment==="pending"){
+
+      showToast(
+        "⏳ Menunggu pembayaran selesai.",
+        "pending"
+      );
+
+    }
+
+  </script>
 
 </body>
 </html>
